@@ -6,7 +6,7 @@ Bir sorun mu var, bir öneri mi? Doğrudan yaz:
 
 Mesajına şunları eklersen çok daha hızlı çözerim:
 
-- Telefon modelin ve iOS sürümün
+- Telefon modelin ve iOS / Android sürümün
 - Hangi bölümde olduğun (bölüm numarası)
 - Ne olmasını beklediğin, bunun yerine ne olduğu
 
@@ -43,6 +43,8 @@ Oyun ilerlemesi **yalnızca telefonunda** saklanır; bulutta yedeği yoktur. Uyg
 ### Ana menüde SKORLAR düğmesi yok
 
 Bu düğme yalnızca Game Center'a giriş yapıldığında görünür. **iOS Ayarlar > Game Center** üzerinden giriş yap, sonra oyunu tekrar başlat.
+
+Android sürümünde skor tablosu yok; bu düğme Android'de hiç görünmez. En iyi sürelerin ve madalyaların bölüm kartlarında duruyor.
 
 ### Skorlarım Game Center'da görünmüyor
 
@@ -83,7 +85,7 @@ Found a problem, or have a suggestion? Write directly:
 
 Including these makes it much faster to solve:
 
-- Your phone model and iOS version
+- Your phone model and iOS / Android version
 - Which level you were on (level number)
 - What you expected to happen, and what happened instead
 
@@ -120,6 +122,8 @@ Progress is stored **only on your phone**; there is no cloud backup. Deleting th
 ### There is no LEADERBOARDS button in the main menu
 
 That button appears only when you are signed in to Game Center. Sign in from **iOS Settings > Game Center**, then restart the game.
+
+The Android version has no leaderboards, so the button never appears on Android. Your best times and medals are shown on the level cards.
 
 ### My scores don't appear in Game Center
 
