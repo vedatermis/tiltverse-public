@@ -1,7 +1,7 @@
 # Tiltverse — Gizlilik Politikası
 
-**Yürürlük tarihi:** 4 Ağustos 2026
-**Uygulama:** Tiltverse (iOS)
+**Yürürlük tarihi:** 24 Kasım 2026 (Android sürümü eklendi)
+**Uygulama:** Tiltverse (iOS ve Android)
 **Geliştirici:** Vedat Ermiş
 **İletişim:** vedatermis@hotmail.com
 
@@ -14,7 +14,7 @@ Tiltverse'te hesap açmanız gerekmez. Adınızı, e-postanızı, telefon numara
 Yalnızca iki yerde veri, bizim dışımızdaki şirketlere gider:
 
 1. **Reklamlar** — Unity Ads reklam gösterebilmek için cihazınıza ait teknik bilgileri işler.
-2. **Skor tabloları** — Game Center'a giriş yaptıysanız, oyun içi toplam puanlarınız Apple'a gönderilir.
+2. **Skor tabloları (yalnızca iOS)** — Game Center'a giriş yaptıysanız, oyun içi toplam puanlarınız Apple'a gönderilir.
 
 Ayrıntılar aşağıda.
 
@@ -28,7 +28,7 @@ Ayrıntılar aşağıda.
 
 ### 1.2. Cihazınızda kalan veriler
 
-Aşağıdakiler telefonunuzun yerel deposunda (iOS `UserDefaults`) tutulur ve **cihazdan hiçbir yere gönderilmez**:
+Aşağıdakiler telefonunuzun yerel deposunda (iOS'ta `UserDefaults`, Android'de `SharedPreferences`) tutulur ve **cihazdan hiçbir yere gönderilmez**:
 
 - Tamamlanan bölümler ve açılan kilitler
 - Her bölüm için en iyi süre, toplanan küre sayısı ve madalya
@@ -41,7 +41,10 @@ Uygulamayı sildiğinizde bu veriler de silinir.
 
 Oyun, topu yönlendirmek için telefonunuzun ivmeölçer ve jiroskop verilerini okur. Bu veriler **yalnızca o anki oyun oturumu içinde**, topun hareketini hesaplamak için kullanılır. Kaydedilmez, saklanmaz, hiçbir yere gönderilmez.
 
-### 1.4. Game Center (isteğe bağlı)
+### 1.4. Game Center (isteğe bağlı, yalnızca iOS)
+
+Android sürümünde skor tablosu yoktur; Google Play Games kullanılmaz ve bu bölümdeki veriler Android'de hiç işlenmez.
+
 
 Cihazınızda Game Center'a giriş yapmışsanız, oyun Apple'ın skor tablolarına üç toplam değer gönderir:
 
@@ -64,17 +67,22 @@ Tiltverse ücretsizdir ve **Unity Ads** üzerinden reklam gösterir:
 
 Reklam gösterebilmek için Unity Technologies aşağıdaki türde verileri işleyebilir:
 
-- Cihaz tanımlayıcıları (IDFV — satıcıya özel tanımlayıcı)
+- Cihaz tanımlayıcıları — iOS'ta IDFV (satıcıya özel tanımlayıcı), Android'de Android reklam kimliği (AAID)
 - Cihaz modeli, işletim sistemi sürümü, dil ve ülke ayarı
-- IP adresi
+- IP adresi ve ondan çıkarılan yaklaşık konum (ülke/şehir düzeyi; hassas konum alınmaz)
+- Uygulama kullanım süreleri ve teknik teşhis verileri
 - Reklamla etkileşiminiz (gösterildi mi, izlendi mi, tıklandı mı)
 
 Bu verileri **biz görmüyoruz**; doğrudan Unity'nin sistemlerine gider.
 
+**Reklamlar kişiselleştirilmez.** Oyun, Unity Ads'i her başlattığında Unity'ye davranışsal (ilgi alanına dayalı) hedefleme yapmamasını bildirir; Avrupa Birliği ve ABD eyalet yasaları kapsamında da "izin yok / paylaşım yok" olarak işaretlenir. Unity bu verileri yine de reklamı gösterebilmek, gösterim sıklığını sınırlamak ve dolandırıcılığı önlemek için kullanır.
+
+Android'de reklam kimliğinizi istediğiniz zaman **Ayarlar > Gizlilik > Reklamlar** (bazı cihazlarda **Ayarlar > Google > Reklamlar**) bölümünden sıfırlayabilir veya silebilirsiniz.
+
 Unity'nin oyuncular için gizlilik politikası:
 https://unity.com/legal/game-player-and-app-user-privacy-policy
 
-### 1.6. SKAdNetwork
+### 1.6. SKAdNetwork (yalnızca iOS)
 
 Uygulama, Apple'ın **SKAdNetwork** çerçevesini kullanır. Bu çerçeve reklam kampanyalarının başarısını ölçer ama bunu kişi bazında değil, **toplu ve anonim** şekilde yapar. Sizi tanımlayan bir bilgi içermez.
 
@@ -88,6 +96,8 @@ Bunun pratik anlamı: gördüğünüz reklamlar, başka uygulamalardaki davranı
 
 İleride bu değişirse, uygulama size iOS'un standart izin penceresini gösterecek ve bu politika güncellenecektir. İzin vermemeyi seçmeniz oyunun hiçbir özelliğini kısıtlamaz.
 
+**Android:** Android'de bu tür bir izin penceresi yoktur; Unity Ads, Android reklam kimliğine (yukarıda 1.5) erişebilir. Sonuç iOS ile aynıdır: oyun Unity'ye davranışsal hedefleme yapmamasını bildirir, reklamlar bağlamsaldır. Oyun konum, kamera, mikrofon, kişiler veya depolama izni istemez; izin listesindeki internet, ağ durumu ve reklam kimliği izinleri reklamlar, titreşim izni oyun hissi içindir.
+
 ---
 
 ## 3. Çocukların gizliliği
@@ -100,8 +110,8 @@ Tiltverse 13 yaşın altındaki çocuklara yönelik olarak tasarlanmamıştır v
 
 | Veri | Nerede | Nasıl silinir |
 |---|---|---|
-| Oyun ilerlemesi ve ayarlar | Yalnızca cihazınızda | Uygulamayı silin |
-| Game Center skorları | Apple'ın sunucularında | iOS Ayarlar > Game Center üzerinden yönetin |
+| Oyun ilerlemesi ve ayarlar | Yalnızca cihazınızda | Uygulamayı silin (Android'de ayrıca Ayarlar > Uygulamalar > Tiltverse > Depolama > Verileri temizle) |
+| Game Center skorları (yalnızca iOS) | Apple'ın sunucularında | iOS Ayarlar > Game Center üzerinden yönetin |
 | Reklam verileri | Unity Technologies | Unity'nin gizlilik politikasındaki yöntemlerle |
 
 Bizim sakladığımız bir veri olmadığı için, bizden silinmesini isteyeceğiniz bir kayıt da yoktur.
@@ -129,7 +139,7 @@ Oyun içinde reklamları kapatan bir seçenek sunulursa, bu seçeneği etkinleş
 
 ## 7. Üçüncü taraf bağlantıları
 
-Reklamlar sizi üçüncü taraf web sitelerine veya App Store sayfalarına yönlendirebilir. Bu sitelerin içeriğinden ve gizlilik uygulamalarından sorumlu değiliz.
+Reklamlar sizi üçüncü taraf web sitelerine, App Store veya Google Play sayfalarına yönlendirebilir. Bu sitelerin içeriğinden ve gizlilik uygulamalarından sorumlu değiliz.
 
 ---
 
@@ -151,8 +161,8 @@ vedatermis@hotmail.com
 
 # Tiltverse — Privacy Policy
 
-**Effective date:** 4 August 2026
-**App:** Tiltverse (iOS)
+**Effective date:** 24 November 2026 (Android version added)
+**App:** Tiltverse (iOS and Android)
 **Developer:** Vedat Ermiş
 **Contact:** vedatermis@hotmail.com
 
@@ -165,7 +175,7 @@ Tiltverse does not require an account. We do not ask for and do not collect your
 Data leaves your device to third parties in only two cases:
 
 1. **Ads** — Unity Ads processes technical information about your device in order to serve ads.
-2. **Leaderboards** — if you are signed in to Game Center, your aggregate scores are sent to Apple.
+2. **Leaderboards (iOS only)** — if you are signed in to Game Center, your aggregate scores are sent to Apple.
 
 Details below.
 
@@ -179,7 +189,7 @@ Details below.
 
 ### 1.2. Data that stays on your device
 
-The following is stored in local storage on your phone (iOS `UserDefaults`) and is **never transmitted anywhere**:
+The following is stored in local storage on your phone (`UserDefaults` on iOS, `SharedPreferences` on Android) and is **never transmitted anywhere**:
 
 - Completed levels and unlocked progress
 - Best time, orbs collected, and medal earned per level
@@ -192,7 +202,10 @@ Deleting the app deletes this data.
 
 The game reads your device's accelerometer and gyroscope to steer the ball. This data is used **only within the current play session** to compute ball movement. It is not recorded, stored, or transmitted.
 
-### 1.4. Game Center (optional)
+### 1.4. Game Center (optional, iOS only)
+
+The Android version has no leaderboards; Google Play Games is not used and none of the data in this section is processed on Android.
+
 
 If you are signed in to Game Center, the game submits three aggregate values to Apple's leaderboards:
 
@@ -215,17 +228,22 @@ Tiltverse is free and shows ads through **Unity Ads**:
 
 To serve ads, Unity Technologies may process:
 
-- Device identifiers (IDFV — identifier for vendor)
+- Device identifiers — IDFV (identifier for vendor) on iOS, the Android advertising ID (AAID) on Android
 - Device model, OS version, language and country settings
-- IP address
+- IP address and the approximate location derived from it (country/city level; no precise location)
+- App usage times and technical diagnostics
 - Your interaction with the ad (shown, watched, clicked)
 
 **We do not see this data**; it goes directly to Unity's systems.
 
+**Ads are not personalised.** Every time the game starts Unity Ads, it tells Unity not to use behavioural (interest-based) targeting, and marks the user as "no consent / do not sell or share" under EU and US state privacy laws. Unity still uses this data to deliver the ad, cap how often ads are shown and prevent fraud.
+
+On Android you can reset or delete your advertising ID at any time under **Settings > Privacy > Ads** (on some devices **Settings > Google > Ads**).
+
 Unity's privacy policy for players:
 https://unity.com/legal/game-player-and-app-user-privacy-policy
 
-### 1.6. SKAdNetwork
+### 1.6. SKAdNetwork (iOS only)
 
 The app uses Apple's **SKAdNetwork** framework. It measures advertising campaign performance in an **aggregated and anonymous** way, not at the individual level, and contains no information identifying you.
 
@@ -239,6 +257,8 @@ In practice this means the ads you see are not personalised based on your behavi
 
 If this changes in a future version, the app will show the standard iOS permission prompt and this policy will be updated. Declining will not restrict any feature of the game.
 
+**Android:** Android has no equivalent permission prompt; Unity Ads may access the Android advertising ID (see 1.5). The result is the same as on iOS: the game tells Unity not to use behavioural targeting, and ads are contextual. The game does not request location, camera, microphone, contacts or storage permissions; the internet, network state and advertising ID permissions in its permission list are for ads, and the vibration permission is for haptic feedback.
+
 ---
 
 ## 3. Children's privacy
@@ -251,8 +271,8 @@ Tiltverse is not directed at children under 13, and we do not knowingly collect 
 
 | Data | Where | How to delete |
 |---|---|---|
-| Game progress and settings | On your device only | Delete the app |
-| Game Center scores | On Apple's servers | Manage via iOS Settings > Game Center |
+| Game progress and settings | On your device only | Delete the app (on Android also Settings > Apps > Tiltverse > Storage > Clear data) |
+| Game Center scores (iOS only) | On Apple's servers | Manage via iOS Settings > Game Center |
 | Advertising data | Unity Technologies | Via the methods in Unity's privacy policy |
 
 Because we store no data ourselves, there is no record held by us for you to request deletion of.
@@ -280,7 +300,7 @@ If an option to disable ads is offered in the game, enabling it turns Unity Ads 
 
 ## 7. Third-party links
 
-Ads may direct you to third-party websites or App Store pages. We are not responsible for the content or privacy practices of those sites.
+Ads may direct you to third-party websites, App Store or Google Play pages. We are not responsible for the content or privacy practices of those sites.
 
 ---
 
